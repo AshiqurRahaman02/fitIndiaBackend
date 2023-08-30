@@ -3,6 +3,7 @@ require("dotenv").config();
 const cors = require('cors');
 let {connection} = require("./db");
 const { classRouter } = require('./routes/class.route');
+const { userRouter } = require('./routes/user.route')
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.get("/",(req,res)=>{
     res.send("Welcome to our API")
 })
 
+app.use("/user", userRouter)
 app.use('/class',classRouter)
 
 
