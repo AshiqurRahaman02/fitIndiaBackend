@@ -19,7 +19,7 @@ userRouter.post('/register',async (req,res)=>{
             const newUser = new UserModel({email, password:hash, name})
 
             await newUser.save();
-            res.status(201).json({isError:false,message: "User registered successfully"});
+            res.status(201).json({isError:false,message: "Welcome to our Website ! Please Login"});
         });
     } catch (error) {
         res.status(404).json({isError:true,message: error.message});
@@ -39,7 +39,7 @@ userRouter.post('/login',async (req,res)=>{
                 res.status(501).json({isError:true,message: err});
             }
 
-            res.status(201).json({isError:false,message: "User login successful", token:jwt.sign({userId: user._id},process.env.jtwSecret)});
+            res.status(201).json({isError:false,message: "Welcome back to our Website !", token:jwt.sign({userId: user._id},process.env.jtwSecret)});
         });
     } catch (error) {
         res.status(404).json({isError:true,message: error.message});
