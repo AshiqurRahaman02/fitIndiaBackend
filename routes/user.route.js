@@ -39,7 +39,7 @@ userRouter.post('/login',async (req,res)=>{
                 res.status(501).json({isError:true,message: err});
             }
 
-            res.status(201).json({isError:false,message: "Welcome back to our Website !", token:jwt.sign({userId: user._id},process.env.jtwSecret)});
+            res.status(201).json({isError:false,message: "Welcome back to our Website !", token:jwt.sign({userId: user._id},process.env.jtwSecret), user});
         });
     } catch (error) {
         res.status(404).json({isError:true,message: error.message});
